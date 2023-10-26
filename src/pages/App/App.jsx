@@ -5,7 +5,7 @@ import { getUser } from '../../../utilities/user-services'
 import AuthPage from '../Auth/AuthPage/AuthPage'
 import NavBar from '../../components/NavBar/NavBar'
 import MainPage from '../../components/MainPage/MainPage'
-import App from './components/App/App'
+
 
 function App() {
   const [user, setUser] = useState(getUser())
