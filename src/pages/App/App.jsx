@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import './App.css';
 import { getUser } from '../../../utilities/user-services'
 import AuthPage from '../Auth/AuthPage/AuthPage'
-import NavBar from '../NavBar/NavBar'
-import MainPage from '../MainPage/MainPage'
+import NavBar from '../../components/NavBar/NavBar'
+import MainPage from '../../components/MainPage/MainPage'
+import App from './components/App/App'
 
 function App() {
   const [user, setUser] = useState(getUser())
