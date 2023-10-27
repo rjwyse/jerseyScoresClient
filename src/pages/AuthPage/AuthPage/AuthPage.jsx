@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './AuthPage.css';
-import SignUpForm from '../../../components/SignUpForm/SignUpForm'
+import SignUpForm from '../../../components/SignUpForm/SignUpForm';
 import LoginForm from '../../../components/LoginForm/LoginForm';
-import Logo from '../../components/Logo/Logo';
+import Logo from '../../../components/Logo/Logo';
 
 export default function AuthPage({ setUser }) {
   const [showLogin, setShowLogin] = useState(false)

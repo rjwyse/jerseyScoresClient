@@ -1,11 +1,11 @@
 import './JerseyList.css';
 import JerseyListItem from '../JerseyListItem/JerseyListItem';
 
-export default function JerseyList({ menuItems, handleAddToOrder }) {
-  const items = menuItems.map(item =>
+export default function JerseyList({ jerseyItems, handleAddToOrder }) {
+  const items = jerseyItems.map(item =>
     <JerseyListItem
       key={item._id}
-      menuItem={item}
+      jerseyItem={item}
       handleAddToOrder={handleAddToOrder}
     />
   );

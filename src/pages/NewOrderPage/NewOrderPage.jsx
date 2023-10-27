@@ -21,6 +21,7 @@ export default function NewOrderPage({ user, setUser }) {
   useEffect(function() {
     async function getItems() {
       const items = await itemsAPI.getAll();
+      console.log(items)
       categoriesRef.current = [...new Set(items.map(item => item.category.name))];
       setJerseyItems(items);
       setActiveCat(categoriesRef.current[0]);
@@ -65,7 +66,7 @@ export default function NewOrderPage({ user, setUser }) {
         <UserLogOut user={user} setUser={setUser} />
       </aside>
       <JerseyList
-        JerseyItems={JerseyItems.filter(item => item.category.name === activeCat)}
+        jerseyItems={jerseyItems.filter(item => item.category.name === activeCat)}
         handleAddToOrder={handleAddToOrder}
       />
       <OrderDetail order={cart}handleChangeQty={handleChangeQty}/>

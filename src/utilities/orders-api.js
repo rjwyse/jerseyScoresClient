@@ -1,6 +1,6 @@
 import sendRequest from './send-request';
 
-const BASE_URL = '/api/orders';
+const BASE_URL = 'http://localhost:4741/orders';
 
 // Retrieve an unpaid order for the logged in user
 export function getCart() {

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import { getUser } from '../../../src/utilities/user-services';
 import AuthPage from '../AuthPage/AuthPage/AuthPage'
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+//import NavBar from '../../components/NavBar/NavBar'
+//import MainPage from '../../components/MainPage/MainPage'
 
 export default function App() {
   const [user, setUser] = useState(getUser());
