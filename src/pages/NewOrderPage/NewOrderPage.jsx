@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import * as itemsAPI from '../../utilities/items-api';
-import * as ordersAPI from '../../utilities/orders-api';
+import { getAll } from '../../utilities/items-api';
 import './NewOrderPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../components/Logo/Logo';
@@ -8,6 +7,8 @@ import JerseyList from '../../components/JerseyList/JerseyList';
 import CategoryList from '../../components/CategoryList/CategoryList';
 import OrderDetail from '../../components/OrderDetail/OrderDetail';
 import UserLogOut from '../../components/UserLogOut/UserLogOut';
+import { getCart } from '../../utilities/orders-api'
+import sendRequest from '../../utilities/send-request';
 
 export default function NewOrderPage({ user, setUser }) {
   const [jerseyItems, setJerseyItems] = useState([]);
@@ -20,7 +21,7 @@ export default function NewOrderPage({ user, setUser }) {
   // to run ONLY after the FIRST render
   useEffect(function() {
     async function getItems() {
-      const items = await itemsAPI.getAll();
+      const items = await getAll();
       console.log(items)
       categoriesRef.current = [...new Set(items.map(item => item.category.name))];
       setJerseyItems(items);
@@ -28,28 +29,28 @@ export default function NewOrderPage({ user, setUser }) {
     }
     getItems();
 
-    async function getCart() {
-      const cart = await ordersAPI.getCart();
+    async function getAllCart() {
+      const cart = await getCart();
       setCart(cart);
     }
-    getCart();
+    getAllCart();
   }, []);
 
   async function handleAddToOrder(itemId) {
   // alert(`add item: ${itemId}`);
   // 1. Call the addItemToCart function in ordersAPI, passing to it the itemId, and assign the resolved promise to a variable named cart.
-    const updatedCart = await ordersAPI.addItemToCart(itemId);
+    const updatedCart = await addItemToCart(itemId);
   // 2. Update the cart state with the updated cart received from the server
     setCart(updatedCart);
   }
 
   async function handleChangeQty(itemId, newQty) {
-    const updatedCart = await ordersAPI.setItemQtyInCart(itemId, newQty);
+    const updatedCart = await setItemQtyInCart(itemId, newQty);
     setCart(updatedCart);
   }
 
   async function handleCheckout() {
-    await ordersAPI.checkout();
+    await checkout();
     navigate('/orders');
   }
 
