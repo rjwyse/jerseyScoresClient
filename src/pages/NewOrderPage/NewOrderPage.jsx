@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { getAll } from '../../utilities/items-api';
+import * as itemsAPI from '../../utilities/items-api';
+import * as ordersAPI from '../../utilities/orders-api';
 import './NewOrderPage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../components/Logo/Logo';
@@ -21,7 +23,7 @@ export default function NewOrderPage({ user, setUser }) {
   // to run ONLY after the FIRST render
   useEffect(function() {
     async function getItems() {
-      const items = await getAll();
+      const items = await itemsAPI.getAll();
       console.log(items)
       categoriesRef.current = [...new Set(items.map(item => item.category.name))];
       setJerseyItems(items);
@@ -30,7 +32,7 @@ export default function NewOrderPage({ user, setUser }) {
     getItems();
 
     async function getAllCart() {
-      const cart = await getCart();
+      const cart = await ordersAPI.getCart();
       setCart(cart);
     }
     getAllCart();
@@ -45,12 +47,12 @@ export default function NewOrderPage({ user, setUser }) {
   }
 
   async function handleChangeQty(itemId, newQty) {
-    const updatedCart = await setItemQtyInCart(itemId, newQty);
+    const updatedCart = await ordersAPI.setItemQtyInCart(itemId, newQty);
     setCart(updatedCart);
   }
 
   async function handleCheckout() {
-    await checkout();
+    await ordersAPI.checkout();
     navigate('/orders');
   }
 
