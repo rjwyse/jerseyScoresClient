@@ -25,3 +25,12 @@ export function checkout() {
   // Changing data on the server, so make it a POST request
   return sendRequest(`${BASE_URL}/cart/checkout`, 'POST');
 }
+
+export function getAll() {
+  return sendRequest(`${BASE_URL}/getorders`);
+}
+
+export function deleteOrder(orderId) {
+  console.log('Deleting order with orderId:', orderId);
+  return sendRequest(`${BASE_URL}/${orderId}`,'DELETE')
+}

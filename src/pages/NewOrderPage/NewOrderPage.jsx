@@ -22,6 +22,7 @@ export default function NewOrderPage({ user, setUser }) {
   // The empty dependency array causes the effect
   // to run ONLY after the FIRST render
   useEffect(function() {
+    console.log("useEffect is running!");
     async function getItems() {
       const items = await itemsAPI.getAll();
       console.log(items)
@@ -33,6 +34,7 @@ export default function NewOrderPage({ user, setUser }) {
 
     async function getAllCart() {
       const cart = await ordersAPI.getCart();
+      console.log(cart);
       setCart(cart);
     }
     getAllCart();
