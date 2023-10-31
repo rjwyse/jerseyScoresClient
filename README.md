@@ -10,6 +10,8 @@
 ## Application Images
 - Sign In Page
 ![Alt text](JerseyScoresloginpage.png)
+![Alt text](JerseyScoresOrder.png)
+![Alt text](JerseyScoresOrderHistory.png)
 
 ## Technologies Used
 - Express

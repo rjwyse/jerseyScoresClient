@@ -1,5 +1,5 @@
 import sendRequest from "./send-request";
-const BASE_URL = 'https://jerseyscores.onrender.com/items';
+const BASE_URL = 'http://localhost:4741/items';
 
 export async function getAll() {
   return sendRequest(BASE_URL);

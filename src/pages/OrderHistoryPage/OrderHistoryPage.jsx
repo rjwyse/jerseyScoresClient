@@ -39,7 +39,7 @@ export default function OrderHistoryPage() {
      console.error('Error deleting order:', error);
    }
  };
-
+console.log(previousOrders)
   return (
     <div>
       <h1>Order History</h1>
@@ -50,7 +50,7 @@ export default function OrderHistoryPage() {
               <h3>Order ID: {order.orderId}</h3>
               <p>Order Total: ${order.orderTotal}</p>
               <p>Total Quantity: {order.totalQty}</p> {/* Display the total quantity of the order */}
-              <button onClick={() => deleteOrder(order.orderId)}>Delete</button> {/* Delete button */}
+              <button onClick={() => deleteOrder(order.id)}>Delete</button> {/* Delete button */}
             </div>
           ))}
         </ul>
