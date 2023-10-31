@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as ordersAPI from '../../utilities/orders-api';
+import { deleteOrder } from '../../utilities/orders-api'
 
 export default function OrderHistoryPage() {
   const location = useLocation();
@@ -28,17 +29,16 @@ export default function OrderHistoryPage() {
 
 
   const deleteOrder = async (orderId) => {
-    console.log('you got here')
     try {
-      await ordersAPI.deleteOrder(orderId);
-      setPreviousOrders((prevOrders) => prevOrders.filter((order) => order.orderId !== orderId));
-    } catch (error) {
-      console.error('Error deleting order:', error);
-      setError('Error deleting order. Please try again.');
-  
-
-    }
-  };
+     await ordersAPI.deleteOrder(orderId);
+     fetchOrderHistory()
+     const updatedOrderHistory = OrderHistoryPage.filter(order => order.orderId !== orderId);
+     setOrderHistory(updatedOrderHistory);
+     setSelectedOrder(null);
+   } catch (error) {
+     console.error('Error deleting order:', error);
+   }
+ };
 
   return (
     <div>
