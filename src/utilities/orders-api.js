@@ -1,6 +1,6 @@
 import sendRequest from './send-request';
 
-const BASE_URL = 'https://jerseyscores.onrender.com/orders';
+const BASE_URL = 'https://jerseyscoresapi.onrender.com/orders';
 
 // Retrieve an unpaid order for the logged in user
 export function getCart() {
@@ -31,5 +31,6 @@ export function getAll() {
 }
 
 export function deleteOrder(orderId) {
+  console.log('ordersApi', orderId)
   return sendRequest(`${BASE_URL}/${orderId}`, 'DELETE');
 }

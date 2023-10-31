@@ -10,6 +10,7 @@ export default function OrderHistoryPage() {
   console.log('working');
   const [previousOrders, setPreviousOrders] = useState([]);
   const [error, setError] = useState(null);
+  const [toggle, setToggle] = useState(true)
 
   useEffect(function() {
     console.log('useEffect is running!');
@@ -25,16 +26,18 @@ export default function OrderHistoryPage() {
       setPreviousOrders(ordersWithTotalQuantity);
     }
     getOrders();
-  }, []);
+  }, [toggle]);
 
 
   const deleteOrder = async (orderId) => {
+    console.log('orderId', orderId)
     try {
      await ordersAPI.deleteOrder(orderId);
-     fetchOrderHistory()
-     const updatedOrderHistory = OrderHistoryPage.filter(order => order.orderId !== orderId);
-     setOrderHistory(updatedOrderHistory);
-     setSelectedOrder(null);
+     setToggle(!toggle)
+     //fetchOrderHistory()
+    //  const updatedOrderHistory = OrderHistoryPage.filter(order => order.orderId !== orderId);
+    //  setOrderHistory(updatedOrderHistory);
+    //  setSelectedOrder(null);
    } catch (error) {
      console.error('Error deleting order:', error);
    }

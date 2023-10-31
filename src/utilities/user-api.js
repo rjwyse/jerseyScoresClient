@@ -1,5 +1,5 @@
 import sendRequest from './send-request'
-const BASE_URL = 'https://jerseyscores.onrender.com/users'
+const BASE_URL = 'https://jerseyscoresapi.onrender.com/users'
 
 export async function signUp(userData) {
     return sendRequest(BASE_URL, 'POST', userData)
