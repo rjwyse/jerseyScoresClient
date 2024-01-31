@@ -9,7 +9,7 @@ export function getCart() {
 
 // Add an item to the cart
 export function addItemToCart(itemId) {
-  // Just send itemId for best security (no pricing)
+
   return sendRequest(`${BASE_URL}/cart/items/${itemId}`, 'POST');
 }
 
@@ -17,9 +17,9 @@ export function setItemQtyInCart(itemId, newQty) {
   return sendRequest(`${BASE_URL}/cart/qty`, 'PUT', { itemId, newQty });
 }
 
-// Updates the order's (cart's) isPaid property to true
+
 export function checkout() {
-  // Changing data on the server, so make it a POST request
+
   return sendRequest(`${BASE_URL}/cart/checkout`, 'POST');
 }
 
